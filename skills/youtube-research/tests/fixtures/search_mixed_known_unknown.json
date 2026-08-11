@@ -1,0 +1,27 @@
+{
+  "contents": {
+    "twoColumnSearchResultsRenderer": {
+      "primaryContents": {
+        "sectionListRenderer": {
+          "contents": [
+            {
+              "itemSectionRenderer": {
+                "contents": [
+                  {
+                    "videoRenderer": {
+                      "videoId": "knownvideo1",
+                      "title": {"simpleText": "Known"},
+                      "viewCountText": {"simpleText": "10 views"},
+                      "lengthText": {"simpleText": "1:00"}
+                    }
+                  },
+                  {"futureVideoRenderer": {"opaque": "value"}}
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
