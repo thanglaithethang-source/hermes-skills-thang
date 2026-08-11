@@ -1,0 +1,16 @@
+{
+  "metadata": {
+    "channelMetadataRenderer": {
+      "externalId": "UC1",
+      "title": "Channel One",
+      "description": "A channel",
+      "country": "VN"
+    }
+  },
+  "header": {
+    "c4TabbedHeaderRenderer": {
+      "title": "Channel One",
+      "subscriberCountText": {"simpleText": "1.2M subscribers"}
+    }
+  }
+}
