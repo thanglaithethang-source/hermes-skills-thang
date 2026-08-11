@@ -1,0 +1,14 @@
+version: 2
+departments:
+  executive: [chief-of-staff, project-manager, risk-manager]
+  research_strategy: [market-researcher, competitive-intelligence-analyst, data-analyst]
+  product: [product-manager, business-analyst, product-strategist]
+  design_creative: [ux-researcher, ui-designer, brand-strategist]
+  engineering: [software-architect, backend-architect, frontend-developer, ai-engineer, devops-automator, database-optimizer]
+  marketing_sales: [marketing-strategist, content-strategist, sales-strategist]
+  operations: [operations-manager, automation-specialist, technical-writer]
+  qa_security: [qa-engineer, code-reviewer, security-engineer, sre]
+  integration: [integration-engineer, release-manager, final-auditor]
+defaults:
+  activate_only_required_departments: true
+  producer_cannot_be_final_reviewer: true
