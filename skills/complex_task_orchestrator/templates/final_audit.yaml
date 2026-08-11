@@ -1,0 +1,68 @@
+# FINAL AUDIT TEMPLATE
+# Auditor độc lập kiểm tra sau khi tất cả task PASS và integration hoàn thành.
+
+audit_id: ""
+auditor: ""                              # "hermes" hoặc task_id
+audit_date: ""
+project_name: ""
+
+# === TỔNG QUAN ===
+overall_status: ""                       # PASS | FAIL
+
+# === KIỂM TRA TỪNG TIÊU CHÍ ===
+criteria:
+  - criterion: ""                        # Từ task_contract.acceptance_criteria
+    status: ""                           # PASS | FAIL | N/A
+    evidence: ""                        # Bằng chứng kiểm chứng (exit code, file path, test output)
+    verification_method: ""             # Cách đã kiểm
+
+# === DANH SÁCH LỖI (nếu FAIL) ===
+fail_list:
+  - id: F01
+    criterion: ""
+    description: ""
+    severity: HIGH                       # LOW | MEDIUM | HIGH | CRITICAL
+    affected_tasks: []                  # task_id list
+    repair_strategy: ""
+    assigned_to: ""                      # REPAIRER task_id
+
+# === KIỂM TRA BỔ SUNG ===
+supplementary_checks:
+  - check: "Regression"
+    status: ""
+    evidence: ""
+  - check: "Security/Privacy"
+    status: ""
+    evidence: ""
+  - check: "Placeholder/TODO/Mock không được phép"
+    status: ""
+    evidence: ""
+  - check: "File thừa"
+    status: ""
+    evidence: ""
+  - check: "Artifact thiếu"
+    status: ""
+    evidence: ""
+  - check: "Test và build"
+    status: ""
+    evidence: ""
+  - check: "Hướng dẫn sử dụng"
+    status: ""
+    evidence: ""
+  - check: "Khả năng hoàn tác"
+    status: ""
+    evidence: ""
+
+# === RỦI RO CÒN LẠI ===
+residual_risks:
+  - description: ""
+    severity: LOW
+    mitigation: ""
+
+# === TRẠNG THÁI ĐÓNG BĂNG ===
+frozen: false                           # true khi fail_list đã đóng băng, tạo repair tasks
+repair_tasks_created: []                 # task_id list của repair tasks
+
+# === KẾT LUẬN ===
+conclusion: ""
+can_proceed_to_report: false            # true chỉ khi overall_status=PASS
