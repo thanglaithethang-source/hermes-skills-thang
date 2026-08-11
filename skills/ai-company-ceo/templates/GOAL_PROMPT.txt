@@ -1,0 +1,21 @@
+Khởi động AI Company.
+
+MỤC TIÊU:
+[objective]
+
+ĐẦU RA BẮT BUỘC:
+- [deliverable 1]
+- [deliverable 2]
+
+TIÊU CHÍ NGHIỆM THU:
+- AC-01: [condition] — kiểm bằng [verification]
+- AC-02: [condition] — kiểm bằng [verification]
+
+GIỚI HẠN:
+- max_parallel_workers: 6
+- max_retries_per_task: 3
+- max_repair_cycles: 5
+- budget/time: [value]
+- không merge main/deploy/external message/spend money
+
+Dùng Agency Agents để tuyển specialist và Agent Swarm để thực hiện bền vững. Tiếp tục đến PASS hoặc controlled stop condition.
