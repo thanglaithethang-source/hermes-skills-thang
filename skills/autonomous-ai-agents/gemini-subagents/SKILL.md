@@ -49,9 +49,7 @@ wait
 Dùng Gemini 3.5 Flash làm não chính của Hermes (thay DeepSeek):
 
 ```bash
-# 1. Set API key vào .env (dùng key đầu tiên trong pool)
-KEY=$(head -1 ~/.hermes/gemini-pool.keys)
-echo "GOOGLE_API_KEY=$KEY" >> "$HERMES_HOME/.env"
+# 1. Configure your Gemini credential in Hermes' local secrets store (never commit it)
 
 # 2. Đổi model
 hermes config set model.default "google/gemini-3.5-flash"
