@@ -77,7 +77,7 @@ r = send_command({
     'tabId': tab_id
 })
 cfg = json.loads(r['result']['result']['value'])
-api_key = cfg['api_key']        # AIzaSy...qcW8
+api_key = cfg['api_key']        # retrieve from runtime client config
 context = cfg['context']        # Full INNERTUBE_CONTEXT
 visitor_data = context['client']['visitorData']  # Long base64 string
 ```
