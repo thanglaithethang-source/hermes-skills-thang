@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AI Company Final Report",
+  "type": "object",
+  "required": [
+    "status",
+    "goal",
+    "acceptance_matrix",
+    "artifacts",
+    "evidence",
+    "remaining_issues"
+  ],
+  "properties": {
+    "status": {
+      "enum": [
+        "PASS",
+        "FAILED_LIMIT",
+        "BLOCKED",
+        "STOPPED"
+      ]
+    },
+    "goal": {
+      "type": "string"
+    },
+    "acceptance_matrix": {
+      "type": "array"
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "remaining_issues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "cost": {
+      "type": [
+        "object",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": true
+}
