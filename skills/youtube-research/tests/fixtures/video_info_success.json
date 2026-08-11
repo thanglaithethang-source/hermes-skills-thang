@@ -1,0 +1,15 @@
+{
+  "videoDetails": {
+    "videoId": "v1",
+    "title": "AI tools",
+    "author": "Channel One",
+    "channelId": "UC1",
+    "viewCount": "123",
+    "lengthSeconds": "120",
+    "shortDescription": "Description",
+    "keywords": ["ai"]
+  },
+  "microformat": {
+    "playerMicroformatRenderer": {"publishDate": "2026-07-20"}
+  }
+}
