@@ -1,0 +1,12 @@
+include SKILL.md
+include pyproject.toml
+recursive-include scripts *.py
+recursive-include references *.py *.json *.md
+prune tests
+prune .github
+global-exclude SESSION_HANDOFF.md
+global-exclude REVIEW_*.md
+global-exclude IMPLEMENTATION_PLAN_*.md
+global-exclude *.db
+global-exclude __pycache__
+global-exclude *.py[cod]
