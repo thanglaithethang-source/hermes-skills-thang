@@ -1,0 +1,16 @@
+version: 2
+routing:
+  planning: {runtime: hermes, model_tier: smart}
+  business_research: {runtime: hermes, model_tier: regular}
+  coding: {runtime: codex, model_tier: smart}
+  repository_modification: {runtime: codex, model_tier: smart}
+  deterministic_testing: {runtime: codex, model_tier: regular}
+  code_review: {runtime: codex, model_tier: smart, independent_reviewer: true}
+  business_qa: {runtime: hermes, model_tier: smart, independent_reviewer: true}
+  integration: {runtime: codex, model_tier: smart}
+  final_audit: {runtime: hermes, model_tier: ultra, independent_reviewer: true}
+concurrency:
+  initial_max_workers: 6
+  recommended_laptop_max_workers: 10
+  hard_local_cap: 12
+  queue_overflow: true
