@@ -1,0 +1,72 @@
+# SUB-AGENT ASSIGNMENT TEMPLATE
+# Template cho mỗi sub-agent được tạo qua delegate_task.
+# Hermes điền thông tin trước khi gọi delegate_task.
+
+# === THÔNG TIN TASK ===
+task_id: ""
+task_title: ""
+assigned_role: EXECUTOR                 # PLANNER | RESEARCHER | EXECUTOR | TESTER | INTEGRATOR | AUDITOR | REPAIRER
+
+# === GOAL (truyền vào delegate_task.goal) ===
+goal: ""
+
+# === CONTEXT (truyền vào delegate_task.context) ===
+# Chỉ truyền context cần thiết, không truyền toàn bộ lịch sử hội thoại
+context: |
+  ## Project
+  - Name: ...
+  - Repo: ...
+  - Convention: ...
+
+  ## Your Task
+  - Task ID: ...
+  - Objective: ...
+  - Acceptance Criteria: ...
+
+  ## Ownership
+  - You may write to: ...
+  - You may read from: ...
+  - You may NOT touch: ...
+
+  ## Constraints
+  - Do not: rm -rf, git push --force
+  - Use: forward slashes in paths
+
+  ## Output Format
+  Return your result as YAML with this schema:
+  ```yaml
+  status: PASS | FAIL | BLOCKED
+  task_id: ...
+  summary: ...
+  artifacts_created: [{path, type}]
+  files_changed: [{path, change}]
+  tools_used: [...]
+  checks_performed: [{name, result, evidence}]
+  evidence: [...]
+  open_issues: [...]
+  risks: [...]
+  recommended_next_action: ...
+  ```
+
+# === ROLE (truyền vào delegate_task.role) ===
+role: leaf                               # leaf (default) | orchestrator
+
+# === TOOLSETS (nếu cần giới hạn) ===
+# toolsets: [terminal, file]
+
+# === VERIFICATION SAU KHI SUB-AGENT TRẢ VỀ ===
+verification_checklist:
+  - "Sub-agent trả đúng output schema?"
+  - "Mọi artifact trong artifacts_created tồn tại thật?"
+  - "Mọi file trong files_changed thực sự thay đổi?"
+  - "Evidence có thể tái kiểm chứng?"
+  - "Không có open_issues nghiêm trọng?"
+  - "Không vượt quá owned_resources?"
+
+# === RED FLAGS — dấu hiệu kết quả không đáng tin ===
+red_flags:
+  - "Tuyên bố PASS nhưng không có evidence"
+  - "files_changed liệt kê file nhưng không tồn tại"
+  - "checks_performed rỗng hoặc không có result"
+  - "open_issues có mục nghiêm trọng nhưng status=PASS"
+  - "Tóm tắt dài dòng nhưng không có artifact cụ thể"
