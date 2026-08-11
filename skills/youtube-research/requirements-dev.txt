@@ -1,0 +1,6 @@
+pytest>=8,<9
+pytest-cov>=5,<7
+ruff>=0.12,<1
+mypy>=1.15,<2
+types-requests>=2.32,<3
+build>=1.2,<2
