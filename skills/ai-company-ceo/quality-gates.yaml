@@ -1,0 +1,16 @@
+version: 2
+quality_gates:
+  goal_contract: required
+  task_owner: required
+  task_acceptance_check: required
+  isolated_workspace_for_conflicting_writes: required
+  producer_self_check: required
+  independent_review: required
+  deterministic_tests_when_available: required
+  regression_after_repair: required
+  final_acceptance_matrix: required
+completion:
+  allow_done_with_failed_criteria: false
+  allow_done_without_evidence: false
+  max_repair_cycles_default: 5
+  max_task_retries_default: 3
