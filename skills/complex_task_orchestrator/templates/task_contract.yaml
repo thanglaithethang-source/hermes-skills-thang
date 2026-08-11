@@ -1,0 +1,51 @@
+# TASK CONTRACT TEMPLATE
+# Điền trước khi giao task cho sub-agent hoặc bắt đầu execution.
+# Mọi trường phải cụ thể, kiểm chứng được. Không dùng từ cảm tính.
+
+objective: ""              # Mục tiêu duy nhất, rõ ràng, đo lường được
+deliverables:               # Danh sách artifact đầu ra kỳ vọng
+  - name: ""
+    type: source            # source | config | test | doc | data | report
+    path: ""               # Đường dẫn kỳ vọng (nếu biết trước)
+    format: ""             # Format yêu cầu (json, py, md, yaml, etc.)
+inputs:                    # Thông tin đầu vào có sẵn
+  - description: ""
+    source: ""             # File path, URL, hoặc mô tả
+    available: true
+constraints:               # Giới hạn
+  - type: time             # time | resource | access | convention
+    value: ""
+allowed_actions:           # Hành động được phép thực hiện
+  - ""
+forbidden_actions:         # Hành động CẮM
+  - "rm -rf"
+  - "git push --force"
+  - "git reset --hard"
+# Tool routing
+required_capability: ""   # Năng lực cần thiết (ví dụ: "Read and modify Python code")
+selected_tool: ""         # Tool được chọn (ví dụ: "codex", "terminal", "delegate_task")
+selection_reason: ""      # Lý do chọn tool này
+fallback_tool: ""         # Tool dự phòng nếu tool chính fail
+permissions: ""           # Quyền truy cập (read-only, read+write)
+side_effects: ""          # Tác dụng phụ (modifies files, sends requests)
+verification_method: ""   # Cách kiểm tra kết quả (exit code, file exists, test pass)
+acceptance_criteria:       # Tiêu chí nghiệm thu — PHẢI khách quan, kiểm chứng được
+  - criterion: ""          # Ví dụ: "File /path/to/output.json tồn tại"
+    verification: ""       # Cách kiểm: "ls -la /path/to/output.json"
+    required: true         # true = bắt buộc PASS, false = nice-to-have
+dependencies:              # Task phải hoàn thành trước task này
+  - task_id: ""
+    type: hard             # hard = bắt buộc | soft = nên có
+risks:                     # Rủi ro đã biết
+  - description: ""
+    mitigation: ""
+    severity: LOW          # LOW | MEDIUM | HIGH
+approval_gates:            # Cổng duyệt — dừng chờ user trước khi thực thi
+  - trigger: ""            # Ví dụ: "Trước khi xóa dữ liệu"
+    action: ""             # Hành động cần duyệt
+    approved: false
+stop_conditions:           # Điều kiện dừng ngay lập tức
+  - ""
+assumptions:               # Giả định an toàn đã ghi (nếu có)
+  - assumption: ""
+    basis: ""              # Lý do chọn giả định này
