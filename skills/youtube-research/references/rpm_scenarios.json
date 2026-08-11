@@ -1,0 +1,29 @@
+{
+  "version": "1.0.0",
+  "profiles": {
+    "general_user_assumption": {
+      "currency": "USD",
+      "geography_assumption": "mixed global audience",
+      "effective_date": "2026-07-27",
+      "uncertainty_range": [1.0, 8.0],
+      "source_type": "user_assumption",
+      "source_url": null
+    },
+    "tier1_user_assumption": {
+      "currency": "USD",
+      "geography_assumption": "primarily Tier-1 audience",
+      "effective_date": "2026-07-27",
+      "uncertainty_range": [3.0, 18.0],
+      "source_type": "user_assumption",
+      "source_url": null
+    },
+    "shorts_user_assumption": {
+      "currency": "USD",
+      "geography_assumption": "mixed global Shorts feed",
+      "effective_date": "2026-07-27",
+      "uncertainty_range": [0.01, 0.2],
+      "source_type": "user_assumption",
+      "source_url": null
+    }
+  }
+}
