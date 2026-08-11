@@ -1081,7 +1081,7 @@ SAPISID là **httpOnly cookie** → phải lấy qua CDP `Network.getAllCookies`
 ### Extract INNERTUBE config từ page
 
 YouTube expose config qua `window.ytcfg`:
-- `ytcfg.get("INNERTUBE_API_KEY")` — API key public (AIzaSy...)
+- `ytcfg.get("INNERTUBE_API_KEY")` — public client configuration value (retrieve at runtime)
 - `ytcfg.get("INNERTUBE_CONTEXT")` — full context (clientName=WEB, clientVersion, hl, gl, visitorData)
 
 ### Endpoints chính (replay được)
