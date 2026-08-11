@@ -1,0 +1,19 @@
+version: 2
+approval_required:
+  - merge_main
+  - production_deploy
+  - external_email
+  - external_message
+  - social_publish
+  - purchase_or_payment
+  - account_change
+  - permission_change
+  - destructive_operation_outside_workspace
+  - registry_change
+  - firewall_change
+  - public_port_exposure
+  - sensitive_data_access
+default_policy:
+  unknown_action: deny_and_request_approval
+  destructive_action: deny_and_request_approval
+  credential_export: deny
