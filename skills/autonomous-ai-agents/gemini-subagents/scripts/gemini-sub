@@ -1,0 +1,52 @@
+#!/bin/bash
+# Gemini sub-agent wrapper — auto key selection + fallback + path conversion
+# Usage: gemini-sub "prompt" [--key N] [--workdir PATH]
+#
+# --key N     : use specific key from pool (1-indexed)
+# --workdir   : working directory (git-bash or Windows path OK)
+# default     : random key, auto-fallback on rate limit
+
+SCRIPT_DIR="$(dirname "$(realpath "$0")")"
+SCRIPT="$SCRIPT_DIR/gemini-subagent.py"
+KEYFILE="$HOME/.hermes/gemini-pool.keys"
+
+TOTAL_KEYS=$(wc -l < "$KEYFILE" | tr -d ' ')
+
+PROMPT=""
+WORKDIR="."
+KEY_NUM=""
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --key)     KEY_NUM="$2"; shift 2 ;;
+        --workdir) WORKDIR="$2"; shift 2 ;;
+        *)         PROMPT="$1"; shift ;;
+    esac
+done
+
+# Convert git-bash /tmp/... to Windows C:\... path
+WD=$(cygpath -w "$WORKDIR" 2>/dev/null || echo "$WORKDIR")
+
+# Build key try order
+if [[ -n "$KEY_NUM" ]]; then
+    KEYS_TO_TRY=("$KEY_NUM")
+else
+    KEYS_TO_TRY=($(seq 1 $TOTAL_KEYS | shuf))
+fi
+
+for i in "${KEYS_TO_TRY[@]}"; do
+    KEY=$(sed -n "${i}p" "$KEYFILE")
+    OUTPUT=$(python "$SCRIPT" "$PROMPT" --key "$KEY" --workdir "$WD" 2>&1)
+    EXIT=$?
+
+    if echo "$OUTPUT" | grep -qi "429\|Too Many\|RESOURCE_EXHAUSTED\|rate.limit"; then
+        echo "[key $i rate-limited, trying next...]" >&2
+        continue
+    fi
+
+    echo "$OUTPUT"
+    exit $EXIT
+done
+
+echo "ERROR: All $TOTAL_KEYS keys rate-limited" >&2
+exit 1
