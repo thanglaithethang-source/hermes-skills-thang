@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Keyword competition calibration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version", "training_query_count", "required_features", "coefficients",
+    "intercept", "feature_transforms", "thresholds", "provenance"
+  ],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^(?:1\\.\\d+\\.\\d+|test-1\\.\\d+\\.\\d+)$"
+    },
+    "training_query_count": {"type": "integer", "minimum": 200},
+    "required_features": {
+      "type": "array", "minItems": 1, "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "coefficients": {
+      "type": "object", "minProperties": 1,
+      "additionalProperties": {"type": "number"}
+    },
+    "intercept": {"type": "number"},
+    "feature_transforms": {
+      "type": "object", "minProperties": 1,
+      "additionalProperties": {"enum": ["identity", "log1p"]}
+    },
+    "thresholds": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "array", "minItems": 2, "maxItems": 2,
+        "prefixItems": [
+          {"type": "number", "minimum": 0, "maximum": 100},
+          {"type": "string", "minLength": 1}
+        ],
+        "items": false
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dataset_id", "dataset_sha256", "created_at", "methodology",
+        "label_definition", "holdout_query_count", "holdout_metrics"
+      ],
+      "properties": {
+        "dataset_id": {"type": "string", "minLength": 1},
+        "dataset_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "created_at": {"type": "string", "format": "date-time"},
+        "methodology": {"type": "string", "minLength": 1},
+        "label_definition": {"type": "string", "minLength": 1},
+        "training_query_count": {"type": "integer", "minimum": 200},
+        "holdout_query_count": {"type": "integer", "minimum": 50},
+        "holdout_metrics": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["mae", "spearman_r"],
+          "properties": {
+            "mae": {"type": "number"},
+            "spearman_r": {"type": "number"}
+          }
+        }
+      }
+    }
+  }
+}
